@@ -21,6 +21,9 @@ ENV PHP_ERROR_LOG '/var/log/lighttpd/error.log'
 COPY ./start.sh /
 COPY ./bash_functions.sh /
 
+# youtube script to block ads
+COPY ./youtube.update.sh /usr/local/bin/
+
 # IPv6 disable flag for networks/devices that do not support it
 ENV IPv6 True
 

@@ -5,10 +5,8 @@ version: "3"
 services:
   pihole:
     container_name: pihole
-    hostname: pihole-dock
-    build:
-      context: .
-      dockerfile: Dockerfile_amd64
+    image: pihole/pihole:latest
+    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
     ports:
       - "53:53/tcp"
       - "53:53/udp"
@@ -17,7 +15,7 @@ services:
       - "443:443/tcp"
     environment:
       TZ: 'America/Chicago'
-      WEBPASSWORD: 'tH97L4G1IPMJ73kSpsHz'
+      # WEBPASSWORD: 'set a secure password here or it will be random'
     # Volumes store your data between container upgrades
     volumes:
       - './etc-pihole/:/etc/pihole/'
